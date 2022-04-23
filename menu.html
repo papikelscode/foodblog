@@ -1,528 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-  <title>Menu | Ugo's Cuisine</title>
-  <link rel="stylesheet" href="./reset.css">
-  <link rel="stylesheet" href="./globalStyles.css">
-  <link rel="stylesheet" href="./components.css">
-  <!-- aos library css  -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <!-- Add your custom css -->
-  <link rel="stylesheet" href="./menu.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
+    <title>Food Website</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
-
 <body>
 
-  <!-- Nav Section -->
-  <div class="nav">
-    <div class="container">
-      <div class="nav__wrapper">
-        <a href="./index.html" class="logo">
-          <h2 id="ugo">Ugo cuisine</h2>
-          <!-- <img src="" alt="ugo's cuisine"> -->
-        </a>
-        <nav>
-          <div class="nav__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-menu">
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </div>
-          <div class="nav__bgOverlay"></div>
-          <ol class="nav__list">
-            <div class="nav__close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-x">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+    <!-- desktop view -->
+     <div class="container" id="container"> 
+        <div id="menu">
+            <!-- <div class="title">
+                <img src="/images/foodie hunter.png" alt="">
+            </div> -->
+            <div class="menu-item">
+               <button class="menu-btns">About</button>
+                <button class="menu-btns">Service</button>
+              
+               
+                <button class="menu-btns"  id="myBtn"> Your Orders</button>
+                 <button class="menu-btns">Wishlists</button>
+             
+                <button class="menu-btns">Contact</button>
+                <button class="menu-btns">Checkout</button>
             </div>
-            <div class="nav__list__wrapper">
+        </div> 
+      
+        <!---modal design end-->
+        <div id="myModal" class="modal">
 
-              <li><a class="nav__link" href="./index.html">Home</a></li>
-              <li><a class="nav__link" href="./menu.html">Menu</a></li>
-              <li><a class="nav__link" href="./about.html">About</a></li>
-              <li><a class="nav__link" href="./contact.html">Contact</a></li>
-              <li><a href="./booking.html" class="btn primary-btn">Book Table</a></li>
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+             
+              <i class="fa fa-cart-plus" id="m-cart-plus"  > 0</i>
+          
             </div>
-          </ol>
-        </nav>
-      </div>
+          
+          </div>
+        <div id="food-container">
+            <div id="header">
+                <div class="add-box">
+                    
+                    <i class="fa fa-map-marker your-address" id="add-address" value="Add Map" onclick="showPosition()"> Your Address</i>
+                </div>
+                <div id="embedMap">
+  <!--Google map will be embedded here-->
+</div>
+                <div class="util">
+                    <input type="text" placeholder="Search..">
+                    <i class="fa fa-tags"> Offers</i>
+                    <i class="fa fa-cart-plus" id="cart-plus"> 0 Items</i>
+                </div>
+            </div>
+            <div id="food-items" class="d-food-items">
+                <div id="biryani" class="d-biryani">
+                    <p id="category-name">Biryani</p>    
+                </div>
+
+                <div id="chicken" class="d-chicken">
+                    <p id="category-name">Chicken Delicious</p>    
+                </div>
+
+                <div id="paneer" class="d-paneer">
+                    <p id="category-name">Paneer Mania</p>
+                </div>
+
+                <div id="vegetable" class="d-vegetable">
+                    <p id="category-name">Pure Veg Dishes</p> 
+                </div>
+
+                <div id="chinese" class="d-chinese">
+                    <p id="category-name">Chinese Corner</p> 
+                </div>
+
+                <div id="south-indian" class="d-south-indian">
+                    <p id="category-name">South Indian</p>
+                </div>
+            </div>
+
+            <div id="cart-page" class="cart-toggle">
+                <p id="cart-title">Cart Items</p>
+                <p id="m-total-amount">Total Amout : 100</p>
+                <table>
+                    <thead>
+                        <td>Item</td>
+                        <td>Name</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                    </thead>
+                    <tbody id="table-body">
+                        
+                    </tbody>
+                </table>
+                <div class="btn-box">
+                    <button class="cart-btn" href><a href="/checkout.html">Checkout</a> </button>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="cart">
+            <div class="taste-header">
+                <div class="user">
+                    <i class="fa fa-user-circle" id="circle" ><a href="/login.html"> account</a></i>
+                    
+                </div>
+            </div>
+            <div id="category-list">
+                <p class="item-menu">Go For Hunt</p>
+                <div class="border"></div>                
+            </div>
+            <div id="checkout" class="cart-toggle">
+                <p id="total-item">Total Item : 5</p>
+                <p id="total-price"></p>
+                <p id="delievery">Free delievery on $ 40</p>
+                <button class="cart-btn"><a href="/checkout.html">Checkout</a></button>
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- End Nav Section -->
-  <!-- page Title -->
-  <section id="page__title" data-aos="fade-up">
-    <div class="container">
-      <h2 class="page__title__text">
-        Explore Our Menu
-      </h2>
+
+
+    <!-- mobile view -->
+    <div id="mobile-view" class="mobile-view">
+        <div class="mobile-top">
+            <div class="logo-box">
+                <img src="/images/foodielogo.png" alt="" id="logo">
+                <i class="fa fa-map-marker your-address" id="m-add-address"> Your Address</i>
+            </div>
+            <div class="top-menu">
+                <i class="fa fa-search"></i>
+                <i class="fa fa-tag"></i>
+                <i class="fa fa-heart-o"></i>
+                <i class="fa fa-cart-plus" id="m-cart-plus"> 0</i>
+            </div>
+        </div>
+        
+        <div class="item-container">
+            <div class="category-header" id="category-header">  
+            </div>
+
+            <div id="food-items" class="food-items">
+                <div id="biryani" class="m-biryani">
+                    <p id="category-name">Biryani</p>    
+                </div>
+                <div id="chicken" class="m-chicken">
+                    <p id="category-name">Chicken Delicious</p>    
+                </div>
+                <div id="paneer" class="m-paneer">
+                    <p id="category-name">Paneer Mania</p>
+                </div>
+                <div id="vegetable" class="m-vegetable">
+                    <p id="category-name">Pure Veg Dishes</p> 
+                </div>
+                <div id="chinese" class="m-chinese">
+                    <p id="category-name">Chinese Corner</p> 
+                </div>
+                <div id="south-indian" class="m-south-indian">
+                    <p id="category-name">South Indian</p>
+                </div>
+            </div>            
+        </div>
+
+        <div class="mobile-footer">
+            <p>Home</p>
+            <p>Cart</p>
+            <p>offers</p>
+            <p>orders</p>
+            <p><a href="/login.html">account</a></p>
+        </div>
     </div>
-  </section>
-  <!-- Our Specials -->
-  <section id="ourSpecials" data-aos="fade-up">
-    <div class="container">
-      <h3 class="ourSpecials__title">Our Specials</h3>
-      <div class="ourSpecials__wrapper">
-        <div class="ourSpecials__item">
-          <div class="ourSpecials__item__img">
-            <img src="./images/food-3.png" alt="food img">
-          </div>
-          <div class="ourSpecials__item__info">
-            <h3 class="ourSpecials__item__title">
-              Sweet Potato Fries Bowl
-            </h3>
-            <h4 class="ourSpecials__item__price">$12</h4>
-            <div class="ourSpecials__item__stars">
-              <img src="./images/3star.png" alt="3 stars">
-            </div>
-          </div>
-        </div>
-        <div class="ourSpecials__item">
-          <div class="ourSpecials__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="ourSpecials__item__info">
-            <h3 class="ourSpecials__item__title">
-              Vegan Salad bowl
-            </h3>
-            <h4 class="ourSpecials__item__price">$12</h4>
-            <div class="ourSpecials__item__stars">
-              <img src="./images/3star.png" alt="3 stars">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Our Specials -->
-  <!-- Top Dishes -->
-  <section id="dishGrid" data-aos="fade-down">
-    <div class="container">
-      <h2 class="dishGrid__title">
-        Top Dishes
-      </h2>
-      <div class="dishGrid__wrapper">
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Top Dishes -->
-  <!-- Breakfast Dishes -->
-  <section id="dishGrid" data-aos="fade-up">
-    <div class="container">
-      <h2 class="dishGrid__title">
-        Breakfast
-      </h2>
-      <div class="dishGrid__wrapper">
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Breakfast Dishes -->
-  <!-- Lunch Dishes -->
-  <section id="dishGrid" data-aos="fade-up">
-    <div class="container">
-      <h2 class="dishGrid__title">
-        Lunch
-      </h2>
-      <div class="dishGrid__wrapper">
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Lunch Dishes -->
-  <!-- Dinner Dishes -->
-  <section id="dishGrid" data-aos="fade-up">
-    <div class="container">
-      <h2 class="dishGrid__title">
-        Dinner
-      </h2>
-      <div class="dishGrid__wrapper">
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Dinner Dishes -->
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer__wrapper">
-        <div class="footer__col1">
-          <div class="footer__logo">
-            <a href="./index.html" class="logo">
-              <h2 id="ugo">Ugo cuisine</h2>
-              <!-- <img src="" alt="ugo's cuisine"> -->
-            </a>
-          </div>
-          <p class="footer__desc">
-            Fresh and delicious traditional Russia food to delight the whole family.
-          </p>
-          <div class="footer__socials">
-            <h4 class="footer__socials__title">Follow us</h4>
-            <ol class="footer__socials__list">
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-facebook">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-instagram">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-twitter">
-                    <path
-                      d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                  </svg>
-                </a>
-              </li>
-            </ol>
-          </div>
-        </div>
-        <div class="footer__col2">
-          <h3 class="footer__text__title">
-            Links
-          </h3>
-          <ol class="footer__text">
-            <li>
-              <a href="/index.html">Home</a>
-            </li>
-            <li>
-              <a href="./menu.html">Menu</a>
-            </li>
-            <li>
-              <a href="./booking.html">Book Table</a>
-            </li>
-            <li>
-              <a href="./about.html">About Us</a>
-            </li>
-            <li>
-              <a href="./contact.html">contact Us</a>
-            </li>
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-          </ol>
-        </div>
-        <div class="footer__col3">
-          <h3 class="footer__text__title">
-            Support
-          </h3>
-          <ol class="footer__text">
-            <li>
-              <a href="#">Contact</a>
-            </li>
-            <li>
-              <a href="#">Support Center</a>
-            </li>
-            <li>
-              <a href="#">Feedback</a>
-            </li>
-          </ol>
-        </div>
-        <div class="footer__col4">
-          <h3 class="footer__text__title">
-            Contact
-          </h3>
-          <ol class="footer__text">
-            <li>
-              <a href="#">+7 912218-30-67</a>
-            </li>
-            <li>
-              <a href="#">ugvine@gmail.com</a>
-            </li>
-            <li>
-              <a href="#">Russia</a>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <div id="copyright">
-    <div class="container">
-      <p class="copyright__text">
-        © copyright 2021 Ugo’s Cuisine | All rights reserved
-      </p>
-    </div>
-  </div>
-  <!-- End Footer -->
-<!-- aos script -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <!-- custom script -->
-  <script src="./main.js"></script>
+
+
+
+<script>
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+         <script src="/index.js" type="module"></script>
 </body>
-
 </html>
